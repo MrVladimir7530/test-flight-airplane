@@ -1,4 +1,4 @@
-package org.example.dao;
+package org.example.service;
 
 import org.example.model.Flight;
 import org.example.model.Segment;
