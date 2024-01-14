@@ -17,14 +17,14 @@ public class FlightFilterBuilderImpl implements FlightFilterBuilder {
 
     public FlightFilterBuilder filterDepartureBeforeDateNow() {
         flights.removeIf(o -> o.getSegments().stream()
-                .allMatch(segment -> segment.getDepartureDate()
+                .anyMatch(segment -> segment.getDepartureDate()
                         .isBefore(LocalDateTime.now())));
         return this;
     }
 
     public FlightFilterBuilder filterArrivalBeforeDeparture() {
         flights.removeIf(o -> o.getSegments().stream()
-                .allMatch(segment -> segment.getArrivalDate()
+                .anyMatch(segment -> segment.getArrivalDate()
                         .isBefore(segment.getDepartureDate())));
         return this;
     }
@@ -54,4 +54,10 @@ public class FlightFilterBuilderImpl implements FlightFilterBuilder {
         return flights;
     }
 
+    @Override
+    public String toString() {
+        return "FlightFilterBuilderImpl{" +
+                "flights=" + flights +
+                '}';
+    }
 }
